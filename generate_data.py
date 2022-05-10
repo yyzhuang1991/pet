@@ -12,8 +12,12 @@ labelMap = {'pos':0, 'neg':1, 'neu':2}
 
 for name in ['train', 'dev', 'test']:
 	event2info = json.load(open(join(indir, name, 'event2info.json')))
-	gold_events = sorted([e for e in event2info if event2info[e].get("is_labeled", 0)])
-	gold_labels = [ event2info[e]['label'] for e in gold_events]
+	if name == 'train':
+		gold_events = sorted([e for e in event2info if event2info[e].get("is_labeled", 0)])
+		gold_labels = [ event2info[e]['label'] for e in gold_events]
+	else:
+		gold_events = sorted(event2info.keys())
+		gold_labels = [ event2info[e]['label'] for e in gold_events]
 	toWrite = [f"{e}\t{labelMap[l]}" for e, l in zip(gold_events, gold_labels)]
 	with open(join(outdir, f"{name}.csv"), 'w') as f:
 		f.write("\n".join(toWrite))
