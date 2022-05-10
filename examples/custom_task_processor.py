@@ -98,14 +98,26 @@ class MyTaskDataProcessor(DataProcessor):
         examples = []
 
         with open(path) as f:
-            reader = csv.reader(f, delimiter=',')
-            for idx, row in enumerate(reader):
+            for idx, line in enumerate(f):
                 guid = "%s-%s" % (set_type, idx)
-                label = row[MyTaskDataProcessor.LABEL_COLUMN]
-                text_a = row[MyTaskDataProcessor.TEXT_A_COLUMN]
-                text_b = row[MyTaskDataProcessor.TEXT_B_COLUMN] if MyTaskDataProcessor.TEXT_B_COLUMN >= 0 else None
-                example = InputExample(guid=guid, text_a=text_a, text_b=text_b, label=label)
+                items = line.strip().split("\t")
+                if len(items) == 2:
+                    event, label = items 
+                else:
+                    assert len(items) == 1
+                    event = items[0]
+                    label = "-1"
+                example = InputExample(guid=guid, text_a=event, text_b=None, label=label)
                 examples.append(example)
+        # with open(path) as f:
+        #     reader = csv.reader(f, delimiter=',')
+        #     for idx, row in enumerate(reader):
+        #         guid = "%s-%s" % (set_type, idx)
+        #         label = row[MyTaskDataProcessor.LABEL_COLUMN]
+        #         text_a = row[MyTaskDataProcessor.TEXT_A_COLUMN]
+        #         text_b = row[MyTaskDataProcessor.TEXT_B_COLUMN] if MyTaskDataProcessor.TEXT_B_COLUMN >= 0 else None
+        #         example = InputExample(guid=guid, text_a=text_a, text_b=text_b, label=label)
+        #         examples.append(example)
 
         return examples
 
