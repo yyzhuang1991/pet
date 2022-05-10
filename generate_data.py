@@ -5,7 +5,7 @@ indir, outdir, unlabeledFile = sys.argv[1], sys.argv[2], sys.argv[3]
 if unlabeledFile.endswith('.json'):
 	event2sentis = json.load(open(unlabeledFile))
 	unlabeledEvents = sorted(event2sentis.keys())
-with open(join(outdir, "unlabeled.csv", 'w')) as f:
+with open(join(outdir, "unlabeled.csv"), 'w') as f:
 	json.write("\n".join(unlabeledEvents))
 
 labelMap = {'pos':0, 'neg':1, 'neu':2}
