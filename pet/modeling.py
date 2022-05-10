@@ -342,6 +342,7 @@ def train_pet_ensemble(model_config: WrapperConfig, train_config: TrainConfig, e
 
             # Training
             if do_train:
+                print("training ")
                 if ipet_data_dir:
                     p = os.path.join(ipet_data_dir, 'p{}-i{}-train.bin'.format(pattern_id, iteration))
                     ipet_train_data = InputExample.load_examples(p)
@@ -374,6 +375,7 @@ def train_pet_ensemble(model_config: WrapperConfig, train_config: TrainConfig, e
 
             # Evaluation
             if do_eval:
+                print("evaling")
                 logger.info("Starting evaluation...")
                 if not wrapper:
                     wrapper = TransformerModelWrapper.from_pretrained(pattern_iter_output_dir)

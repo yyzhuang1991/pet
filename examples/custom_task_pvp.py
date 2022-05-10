@@ -58,7 +58,11 @@ class MyTaskPVP(PVP):
             return [text_a, ".", "I", "feel", self.mask, "."], []
         elif self.pattern_id == 1:
             # this corresponds to the pattern [MASK] News: a || (b)
-            return [self.mask, 'News:', text_a], ['(', text_b, ')']
+            return [text_a, ".", "It", "was", self.mask, "."], []
+        elif self.pattern_id == 2:
+            # this corresponds to the pattern [MASK] News: a || (b)
+            return [text_a, ".", "I", "felt", self.mask, "."], []
+        
         else:
             raise ValueError("No pattern implemented for id {}".format(self.pattern_id))
 

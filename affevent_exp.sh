@@ -32,3 +32,16 @@ python3 cli.py \
 --output_dir $outdir \
 --do_eval \
 --do_train  
+
+data_dir=./affevents/twitter/fold"$fold"
+outdir=out/twitter/fold"$fold"
+python3 cli.py \
+--method pet \
+--pet_num_train_epochs 1 \
+--pattern_ids 0 \
+--data_dir $data_dir \
+--model_type bert \
+--model_name_or_path "$outdir"/ \
+--task_name affevent \
+--output_dir $outdir \
+--do_eval \
