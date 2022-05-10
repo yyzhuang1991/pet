@@ -243,6 +243,23 @@ def save_predictions(path: str, wrapper, results: Dict):
         for line in predictions_with_idx:
             fh.write(json.dumps(line) + '\n')
 
+def save_more_predictions(path: str, wrapper, results: Dict):
+    """Save a sequence of predictions to a file"""
+    predictions_with_idx = []
+    print(results.keys())
+    a = kkk
+    if wrapper.task_helper and wrapper.task_helper.output:
+        predictions_with_idx = wrapper.task_helper.output
+    else:
+        inv_label_map = {idx: label for label, idx in wrapper.preprocessor.label_map.items()}
+        for idx, prediction_idx in zip(results['indices'], results['predictions']):
+            prediction = inv_label_map[prediction_idx]
+            idx = idx.tolist() if isinstance(idx, np.ndarray) else int(idx)
+            predictions_with_idx.append({'idx': idx, 'label': prediction})
+
+    with open(path, 'w', encoding='utf8') as fh:
+        for line in predictions_with_idx:
+            fh.write(json.dumps(line) + '\n')
 
 def softmax(x, temperature=1.0, axis=None):
     """Custom softmax implementation"""
