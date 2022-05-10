@@ -138,7 +138,7 @@ def main():
                         help="Batch size per GPU/CPU for PET evaluation.")
     parser.add_argument("--pet_per_gpu_unlabeled_batch_size", default=4, type=int,
                         help="Batch size per GPU/CPU for auxiliary language modeling examples in PET.")
-    parser.add_argument('--pet_gradient_accumulation_steps', type=int, default=1,
+    parser.add_argument('--pet_gradient_accumulation_steps', type=int, default=4,
                         help="Number of updates steps to accumulate before performing a backward/update pass in PET.")
     parser.add_argument("--pet_num_train_epochs", default=3, type=float,
                         help="Total number of training epochs to perform in PET.")

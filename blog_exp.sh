@@ -1,13 +1,11 @@
-# generate data 
-outdir=./affevents/twitter
-indir=/uusoc/exports/scratch/yyzhuang/affevent-lm-aug/new-aug/twitter/10fold/scoremode_agree/use_rlogf0/freq3
-unlabeledEvent=/uusoc/res/nlp/nlp/yuan/affevent-lm/twitter/new_data_aug/dest/data/processed_event2sentis.json
+outdir=./affevents/blog
+indir=/uusoc/exports/scratch/yyzhuang/affevent-lm-aug/new-aug/blog/10fold/scoremode_agree/freq3
+unlabeledEvent=/uusoc/res/nlp/nlp/yuan/affevent-lm/twitter/new_data_aug/self-train/data/blog/transformed_events.list
 for fold in {0..9}
 do
-    curIndir="$indir"/fold"$fold"/conf1_gen1/gen0.850.850.85_conf0.850.850.85/cyc1
+    curIndir="$indir"/fold"$fold"/maxevent-1_conf1_gen1_userlogf0/gen0.90.90.9_conf0.90.90.9/cyc1
     curOutdir="$outdir"/fold"$fold"
     mkdir -p $curOutdir
-
     echo $curIndir
     python generate_data.py $curIndir $curOutdir $unlabeledEvent
 done  

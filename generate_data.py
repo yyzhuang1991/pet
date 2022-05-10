@@ -5,6 +5,9 @@ indir, outdir, unlabeledFile = sys.argv[1], sys.argv[2], sys.argv[3]
 if unlabeledFile.endswith('.json'):
 	event2sentis = json.load(open(unlabeledFile))
 	unlabeledEvents = sorted(event2sentis.keys())
+elif unlabeledFile.endswith(".list"):
+	unlabeledEvents = sorted(json.load(open(unlabeledFile)))
+	
 with open(join(outdir, "unlabeled.csv"), 'w') as f:
 	f.write("\n".join(unlabeledEvents))
 
