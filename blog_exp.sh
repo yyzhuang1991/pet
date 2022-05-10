@@ -11,10 +11,10 @@ do
 done  
 
 
-for fold in {5..9}
+for fold in {0..4}
 do 
-data_dir=./affevents/twitter/fold"$fold"
-outdir=out/twitter/fold"$fold"
+data_dir=./affevents/blog/fold"$fold"
+outdir=out/blog/fold"$fold"
 python3 cli.py \
 --method pet \
 --pet_num_train_epochs 3 \

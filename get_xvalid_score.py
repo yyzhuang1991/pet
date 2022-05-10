@@ -17,5 +17,6 @@ for fold in range(10):
 		preds = [json.loads(line) for line in open(join(pid_iter,"my_predictions.jsonl")).readlines()]
 		precision, recall, f1, _ = score([int(p['label']) for p in preds], [int(p['pred_label']) for p in preds], average='macro')
 		fold2pid2iter2score[fold][pid][itera] = (precision, recall, f1)
+print(fold2pid2iter2score)
 
 

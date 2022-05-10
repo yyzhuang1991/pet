@@ -1,0 +1,7 @@
+running pet with:
+	twitter
+	blog 
+	twitter-reduce 
+
+next:
+	run ipet with twitter, blog and twitter-reduce
