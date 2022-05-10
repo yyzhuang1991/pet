@@ -377,9 +377,7 @@ def train_pet_ensemble(model_config: WrapperConfig, train_config: TrainConfig, e
                 logger.info("Starting evaluation...")
                 if not wrapper:
                     wrapper = TransformerModelWrapper.from_pretrained(pattern_iter_output_dir)
-                print("oh yes")
                 eval_result = evaluate(wrapper, eval_data, eval_config, priming_data=train_data)
-                print("oh no")
                 save_predictions(os.path.join(pattern_iter_output_dir, 'predictions.jsonl'), wrapper, eval_result)
                 save_logits(os.path.join(pattern_iter_output_dir, 'eval_logits.txt'), eval_result['logits'])
 
@@ -488,7 +486,7 @@ def evaluate(model: TransformerModelWrapper, eval_data: List[InputExample], conf
     model.model.to(device)
     results = model.eval(eval_data, device, per_gpu_eval_batch_size=config.per_gpu_eval_batch_size,
                          n_gpu=config.n_gpu, decoding_strategy=config.decoding_strategy, priming=config.priming)
-
+    print(results['logits'][:2])
     predictions = np.argmax(results['logits'], axis=1)
     scores = {}
 
