@@ -28,8 +28,7 @@ import pet
 import log
 
 logger = log.get_logger('root')
-
-
+print(PROCESSORS.keys)
 def load_pet_configs(args) -> Tuple[WrapperConfig, pet.TrainConfig, pet.EvalConfig]:
     """
     Load the model, training and evaluation configs for PET from the given command line arguments.
