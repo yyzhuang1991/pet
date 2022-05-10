@@ -22,6 +22,7 @@ from typing import Tuple
 import torch
 from examples.custom_task_processor import *
 from examples.custom_task_pvp import * 
+print(PROCESSORS.keys())
 
 from pet.tasks import PROCESSORS, load_examples, UNLABELED_SET, TRAIN_SET, DEV_SET, TEST_SET, METRICS, DEFAULT_METRICS
 from pet.utils import eq_div
@@ -30,7 +31,6 @@ import pet
 import log
 
 logger = log.get_logger('root')
-print(PROCESSORS.keys())
 def load_pet_configs(args) -> Tuple[WrapperConfig, pet.TrainConfig, pet.EvalConfig]:
     """
     Load the model, training and evaluation configs for PET from the given command line arguments.
