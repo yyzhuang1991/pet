@@ -793,10 +793,11 @@ TASK_HELPERS = {
 
 METRICS = {
     "cb": ["acc", "f1-macro"],
-    "multirc": ["acc", "f1", "em"]
+    "multirc": ["acc", "f1", "em"],
+    "affevent": ["f1-macro"]
 }
 
-DEFAULT_METRICS = ["f1-macro"]
+DEFAULT_METRICS = ["acc"]
 
 TRAIN_SET = "train"
 DEV_SET = "dev"
