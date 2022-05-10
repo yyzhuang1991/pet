@@ -364,6 +364,7 @@ class TransformerModelWrapper:
             self.model.eval()
 
             batch = {k: t.to(device) for k, t in batch.items()}
+            print(batch)
             labels = batch['labels']
             indices = batch['idx']
             with torch.no_grad():
