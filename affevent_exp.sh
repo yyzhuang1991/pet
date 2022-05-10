@@ -27,6 +27,6 @@ python3 cli.py \
 --model_type bert \
 --model_name_or_path bert-base-uncased \
 --task_name affevent \
---output_dir  \
+--output_dir $outdir \
 --do_train \
 --do_eval
