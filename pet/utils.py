@@ -247,15 +247,15 @@ def save_more_predictions(path: str, wrapper, results: Dict):
     """Save a sequence of predictions to a file"""
     predictions_with_idx = []
     print(results.keys())
-    if sucks == 'a': print('h')
     if wrapper.task_helper and wrapper.task_helper.output:
         predictions_with_idx = wrapper.task_helper.output
     else:
         inv_label_map = {idx: label for label, idx in wrapper.preprocessor.label_map.items()}
-        for idx, prediction_idx in zip(results['indices'], results['predictions']):
+        for idx, prediction_idx, label_idx in zip(results['indices'], results['predictions'],results['labels']):
             prediction = inv_label_map[prediction_idx]
+            label = inv_label_map[label_idx]
             idx = idx.tolist() if isinstance(idx, np.ndarray) else int(idx)
-            predictions_with_idx.append({'idx': idx, 'label': prediction})
+            predictions_with_idx.append({'pred_label': prediction, 'label':label})
 
     with open(path, 'w', encoding='utf8') as fh:
         for line in predictions_with_idx:

@@ -379,7 +379,7 @@ def train_pet_ensemble(model_config: WrapperConfig, train_config: TrainConfig, e
                     wrapper = TransformerModelWrapper.from_pretrained(pattern_iter_output_dir)
                 eval_result = evaluate(wrapper, eval_data, eval_config, priming_data=train_data)
                 save_predictions(os.path.join(pattern_iter_output_dir, 'predictions.jsonl'), wrapper, eval_result)
-                save_more_predictions(os.path.join(pattern_iter_output_dir, 'predictions.jsonl'), wrapper, eval_result)
+                save_more_predictions(os.path.join(pattern_iter_output_dir, 'my_predictions.jsonl'), wrapper, eval_result)
                 
                 save_logits(os.path.join(pattern_iter_output_dir, 'eval_logits.txt'), eval_result['logits'])
 
