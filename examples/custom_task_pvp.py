@@ -55,7 +55,7 @@ class MyTaskPVP(PVP):
         # can also be empty).
         if self.pattern_id == 0:
             # this corresponds to the pattern [MASK]: a b
-            return [text_a, ".", "I", "feel", textself.mask, "."], []
+            return [text_a, ".", "I", "feel", self.mask, "."], []
         elif self.pattern_id == 1:
             # this corresponds to the pattern [MASK] News: a || (b)
             return [self.mask, 'News:', text_a], ['(', text_b, ')']
