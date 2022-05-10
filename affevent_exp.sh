@@ -20,14 +20,15 @@ for fold in 0
 do 
 
 data_dir=./affevents/twitter/fold"$fold"
-outdir='$data_dir'/out
+outdir=out/twitter/fold"$fold"
 python3 cli.py \
 --method pet \
+--pet_num_train_epochs 1 \
 --pattern_ids 0 \
 --data_dir $data_dir \
 --model_type bert \
 --model_name_or_path bert-base-uncased \
 --task_name affevent \
 --output_dir $outdir \
---do_train \
---do_eval
+--do_eval \
+--do_train  
