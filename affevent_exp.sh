@@ -14,7 +14,7 @@ do
     echo $curIndir
     python generate_data.py $curIndir $curOutdir $unlabeledEvent
 done  
-done 
+
 
 for fold in 0 
 do 

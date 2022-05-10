@@ -365,7 +365,7 @@ class TransformerModelWrapper:
 
             batch = {k: t.to(device) for k, t in batch.items()}
             if count == 0:
-                print(batch)
+                print("batch", batch)
                 count += 1
             labels = batch['labels']
             indices = batch['idx']
