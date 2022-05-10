@@ -486,7 +486,7 @@ def evaluate(model: TransformerModelWrapper, eval_data: List[InputExample], conf
     model.model.to(device)
     results = model.eval(eval_data, device, per_gpu_eval_batch_size=config.per_gpu_eval_batch_size,
                          n_gpu=config.n_gpu, decoding_strategy=config.decoding_strategy, priming=config.priming)
-    print(results['logits'][:2])
+    print(results)
     predictions = np.argmax(results['logits'], axis=1)
     scores = {}
 
