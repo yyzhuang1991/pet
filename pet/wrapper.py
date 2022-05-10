@@ -359,12 +359,14 @@ class TransformerModelWrapper:
 
         preds = None
         all_indices, out_label_ids, question_ids = None, None, None
-
+        count = 0 
         for batch in tqdm(eval_dataloader, desc="Evaluating"):
             self.model.eval()
 
             batch = {k: t.to(device) for k, t in batch.items()}
-            print(batch)
+            if count == 0:
+                print(batch)
+                count += 1
             labels = batch['labels']
             indices = batch['idx']
             with torch.no_grad():
