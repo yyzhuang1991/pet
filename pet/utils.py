@@ -246,7 +246,6 @@ def save_predictions(path: str, wrapper, results: Dict):
 def save_more_predictions(path: str, wrapper, results: Dict):
     """Save a sequence of predictions to a file"""
     predictions_with_idx = []
-    print(results.keys())
     if wrapper.task_helper and wrapper.task_helper.output:
         predictions_with_idx = wrapper.task_helper.output
     else:
