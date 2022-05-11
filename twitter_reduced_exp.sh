@@ -4,7 +4,7 @@ do
 	outdir=./affevents/twitter/reduced_"$reduce"
 	indir=/uusoc/exports/scratch/yyzhuang/affevent-lm-aug/new-aug/twitter/10fold-reduced/reduce"$reduce"/scoremode_agree/freq3
 	unlabeledEvent=/uusoc/res/nlp/nlp/yuan/affevent-lm/twitter/new_data_aug/dest/data/processed_event2sentis.json
-	for fold in {0..9}
+	for fold in {7..9}
 	do
 	    curIndir="$indir"/fold"$fold"/conf1_gen1_userlogf0/gen0.90.90.9_conf0.90.90.9/cyc1
 	    curOutdir="$outdir"/fold"$fold"
@@ -14,7 +14,7 @@ do
 	done  
 done 
 
-for reduce in 0.4 0.5
+for reduce in 0.2
 do
 for fold in {0..9}
 do 
